@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Messages.new
+    @message = Message.new
     @room = Room.find(params[:room_id])
     @messages = @room.messages.includes(:user)
   end
@@ -14,7 +14,6 @@ class MessagesController < ApplicationController
       @messages = @room.messages.includes(:user)
       render :index, status: :unprocessable_entity
     end
-  end
   end
 
   private
